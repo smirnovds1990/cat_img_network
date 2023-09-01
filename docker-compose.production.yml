@@ -22,7 +22,7 @@ services:
     volumes:
       - static:/frontend_static/
   gateway:
-    image: smirnovds/kittygram_nginx
+    image: smirnovds/kittygram_gateway
     env_file: .env
     ports:
       - 9000:80
