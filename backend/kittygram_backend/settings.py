@@ -2,13 +2,15 @@
 import os
 from pathlib import Path
 
+from decouple import config, Csv
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-cg6*%6d51ef8f#4!r3*$vmxm4)abgjw8mo!4y-q*uq1!4$-89$'
+SECRET_KEY = config('SECRET_KEY', default='mypassword')
 
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool, default=False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(), default='localhost')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -59,8 +61,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('POSTGRES_DB', 'kittygram_db'),
         'USER': os.getenv('POSTGRES_USER', 'kittygram_user'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),
-        'HOST': os.getenv('DB_HOST', ''),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'dbpassword'),
+        'HOST': os.getenv('DB_HOST', 'host'),
         'PORT': os.getenv('DB_PORT', 5432)
     }
 }
