@@ -46,5 +46,25 @@ docker compose -f docker-compose.production.yml up
 Команда с опциями ```docker compose -f docker-compose.production.yml up``` запускает сборку из файла docker-compose.production.yml, следуя инструкции которого, образы подгружаются с DockerHub, а не создаются локально.
 - Перейти на сайт: http://localhost:9000/
 
+## Работа со скрытыми переменными
+Для работы со скрытыми переменными используется библиотека python-decouple.
+[Ссылка на документацию](https://pypi.org/project/python-decouple/)
+
+Скрытые переменные хранятся в файле .env в директории infra_sprint1/backend/. Пример файла приведён в данной директории в файле .env.example.
+```
+DEBUG = True
+SECRET_KEY = 'My_Secret_Key'
+ALLOWED_HOSTS = 127.0.0.1, localhost
+```
+В файле настроек вызываются следующим образом:
+```
+from decouple import config, Csv
+...
+SECRET_KEY = config('SECRET_KEY', default='mykey')
+DEBUG = config('DEBUG', cast=bool, default=False)
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(), default='localhost')
+```
+Более подробную информацию по работе с библиотекой можно найти в документации по ссылке выше.
+
 ##### Автор проекта
 [smirnovds](https://github.com/smirnovds1990)
