@@ -1,9 +1,8 @@
-# Kittygram
+# Социальная сеть для выкладывания фотографий котов:)
 
 ![workflow badge](https://github.com/smirnovds1990/kittygram_final/actions/workflows/main.yml/badge.svg)
 
 Проект Киттиграм - это сайт, где пользователь может зарегистрироваться и выкладывать фотографии котов, а также просматривать фотографии других пользователей.
-[Ссылка на сайт](https://kgram.sytes.net/)
 
 ## Технологии
 - [Nginx](https://nginx.org/ru/)
